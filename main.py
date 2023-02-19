@@ -15,6 +15,7 @@ def criaCompromisso(vetor):
     comp.descricao = input("Digite a descrição para seu compromisso: ")
 
     vetor.append(comp)
+    print("Compromisso criado com sucesso!")
     menu()
     return vetor
 
@@ -22,23 +23,22 @@ def templateImpressao(compromisso):
     print("------------------------------------")
     print(f"Data do compromisso: {compromisso.data}")
     print(f"Hora do compromisso: {compromisso.hora}")
-    print(f"Duração do compromisso: {compromisso.duracao} horas")
+    print(f"Duração do compromisso (em horas): {compromisso.duracao}")
     print(f"Descrição do compromisso: {compromisso.descricao}")
-    print("-----------------------------------")
+    print("------------------------------------")
 
 def filtro():
     data = input("Digite a data do evento: ")
     hora = input("Digite a hora do evento: ")
 
     for i in range(len(listaDeCompromissos)):
-        if listaDeCompromissos[i].data ==data and listaDeCompromissos[i].hora == hora:
+        if listaDeCompromissos[i].data == data and listaDeCompromissos[i].hora == hora:
             return listaDeCompromissos[i]
 
 
 def consultarCompromisso():
     compromisso = filtro()
     if compromisso:
-        print("Compromisso encontrado:")
         templateImpressao(compromisso)
     else:
         print("Não foi encontrado nenhum compromisso correspondente!")
@@ -64,7 +64,7 @@ def mostraCompromisso(vetor):
     
 
 def menu():
-    print("----------------------------")
+    print("------------------------------------")
     print("Opções da agenda:")
     print("Opção 1: Criar compromisso")
     print("Opção 2: Consultar compromissos")
@@ -72,7 +72,7 @@ def menu():
     print("Opção 4: Excluir compromisso")
     print("Opção 5: Mostrar todos os seus compromissos")
     print("Opção 6: Sair")
-    print("------------------------------")
+    print("------------------------------------")
 
     opcao = int(input("Digite uma opção: "))
 
