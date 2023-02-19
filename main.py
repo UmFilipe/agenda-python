@@ -18,29 +18,45 @@ def criaCompromisso(vetor):
     menu()
     return vetor
 
-def consultarCompromisso():
-    # função de consulta
-    menu()
-
-def editarCompromisso():
-    #função de edição
-    menu()
-
-def excluirCompromisso():
-    #função de exclusão
-    menu()
-
-def templateImpressão(compromisso):
+def templateImpressao(compromisso):
+    print("------------------------------------")
     print(f"Data do compromisso: {compromisso.data}")
     print(f"Hora do compromisso: {compromisso.hora}")
     print(f"Duração do compromisso: {compromisso.duracao} horas")
     print(f"Descrição do compromisso: {compromisso.descricao}")
     print("-----------------------------------")
 
+def filtro():
+    data = input("Digite a data do evento: ")
+    hora = input("Digite a hora do evento: ")
+
+    for i in range(len(listaDeCompromissos)):
+        if listaDeCompromissos[i].data ==data and listaDeCompromissos[i].hora == hora:
+            return listaDeCompromissos[i]
+
+
+def consultarCompromisso():
+    compromisso = filtro()
+    if compromisso:
+        print("Compromisso encontrado:")
+        templateImpressao(compromisso)
+    else:
+        print("Não foi encontrado nenhum compromisso correspondente!")
+    menu()
+
+def editarCompromisso():
+    compromisso = filtro()
+    menu()
+
+def excluirCompromisso():
+    compromisso = filtro()
+    menu()
+
+
 def mostraCompromisso(vetor):
     if vetor:
         for i in range(len(vetor)):
-            templateImpressão(vetor[i])
+            templateImpressao(vetor[i])
     else:
         print("Não existem eventos na sua agenda!")
     
