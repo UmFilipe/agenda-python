@@ -49,7 +49,7 @@ def editarCompromisso():
 
 def excluirCompromisso(vetor):
     compromisso = filtro()
-    if compromisso in vetor:
+    if compromisso:
         vetor.remove(compromisso)
         print("Compromisso removido com sucesso!")
     else:
@@ -62,7 +62,6 @@ def mostraCompromisso(vetor):
             templateImpressao(vetor[i])
     else:
         print("Não existem compromissos na sua agenda!")
-    
     menu()
 
 def menu():
