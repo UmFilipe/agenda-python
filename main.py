@@ -10,7 +10,7 @@ def criaCompromisso(vetor):
     comp = Compromisso()
 
     comp.data = input("Digite a data do compromisso (dd/mm/aaaa): ")
-    comp.hora = input("Digite a hora do compromisso: ")
+    comp.hora = input("Digite a hora do compromisso (hh:mm): ")
     comp.duracao = input("Digite a duração em horas do compromisso: ")
     comp.descricao = input("Digite a descrição para seu compromisso: ")
 
@@ -28,8 +28,8 @@ def templateImpressao(compromisso):
     print("------------------------------------")
 
 def filtro():
-    data = input("Digite a data do evento: ")
-    hora = input("Digite a hora do evento: ")
+    data = input("Digite a data do evento (dd/mm/aaaa): ")
+    hora = input("Digite a hora do evento (hh:mm): ")
 
     for i in range(len(listaDeCompromissos)):
         if listaDeCompromissos[i].data == data and listaDeCompromissos[i].hora == hora:
@@ -47,8 +47,13 @@ def editarCompromisso():
     compromisso = filtro()
     menu()
 
-def excluirCompromisso():
+def excluirCompromisso(vetor):
     compromisso = filtro()
+    if compromisso in vetor:
+        vetor.remove(compromisso)
+        print("Compromisso removido com sucesso!")
+    else:
+        print("Nenhum compromisso foi encontrado!")
     menu()
 
 def mostraCompromisso(vetor):
@@ -80,7 +85,7 @@ def menu():
     elif opcao == "3":
         editarCompromisso()
     elif opcao == "4":
-        excluirCompromisso()
+        excluirCompromisso(listaDeCompromissos)
     elif opcao == "5":
         mostraCompromisso(listaDeCompromissos)
     elif opcao == "6":
