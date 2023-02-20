@@ -74,19 +74,19 @@ def menu():
     print("Opção 6: Sair")
     print("------------------------------------")
 
-    opcao = int(input("Digite uma opção: "))
+    opcao = input("Digite uma opção: ")
 
-    if opcao == 1:
+    if opcao == "1":
         criaCompromisso(listaDeCompromissos)
-    elif opcao == 2:
+    elif opcao == "2":
         consultarCompromisso()
-    elif opcao == 3:
+    elif opcao == "3":
         editarCompromisso()
-    elif opcao == 4:
+    elif opcao == "4":
         excluirCompromisso()
-    elif opcao == 5:
+    elif opcao == "5":
         mostraCompromisso(listaDeCompromissos)
-    elif opcao == 6:
+    elif opcao == "6":
         print("Obrigado por usar a agenda!")
         print("Desenvolvido por Filipe Medeiros de Almeida")
     else:
