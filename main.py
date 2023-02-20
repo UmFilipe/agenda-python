@@ -6,6 +6,24 @@ class Compromisso:
 
 listaDeCompromissos = []
 
+# Funções para reutilização de código
+def templateImpressao(compromisso):
+    print("------------------------------------")
+    print(f"Data do compromisso: {compromisso.data}")
+    print(f"Hora do compromisso: {compromisso.hora}")
+    print(f"Duração do compromisso (em horas): {compromisso.duracao}")
+    print(f"Descrição do compromisso: {compromisso.descricao}")
+    print("------------------------------------")
+
+def filtroPadrao():
+    data = input("Digite a data do evento (dd/mm/aaaa): ")
+    hora = input("Digite a hora do evento (hh:mm): ")
+
+    for i in range(len(listaDeCompromissos)):
+        if listaDeCompromissos[i].data == data and listaDeCompromissos[i].hora == hora:
+            return listaDeCompromissos[i]
+
+# Funções da agenda        
 def criaCompromisso(vetor):
     comp = Compromisso()
 
@@ -17,38 +35,41 @@ def criaCompromisso(vetor):
     vetor.append(comp)
     print("Compromisso criado com sucesso!")
     menu()
-    return vetor
-
-def templateImpressao(compromisso):
-    print("------------------------------------")
-    print(f"Data do compromisso: {compromisso.data}")
-    print(f"Hora do compromisso: {compromisso.hora}")
-    print(f"Duração do compromisso (em horas): {compromisso.duracao}")
-    print(f"Descrição do compromisso: {compromisso.descricao}")
-    print("------------------------------------")
-
-def filtro():
-    data = input("Digite a data do evento (dd/mm/aaaa): ")
-    hora = input("Digite a hora do evento (hh:mm): ")
-
-    for i in range(len(listaDeCompromissos)):
-        if listaDeCompromissos[i].data == data and listaDeCompromissos[i].hora == hora:
-            return listaDeCompromissos[i]
+    return vetor 
 
 def consultarCompromisso():
-    compromisso = filtro()
-    if compromisso:
-        templateImpressao(compromisso)
-    else:
-        print("Não foi encontrado nenhum compromisso correspondente!")
+    print("Opção 1: Consulta com data")
+    print("Opção 2: Consulta com data e hora")
+    opcao = int(input("Digite a opção de consulta desejada: "))
+
+    if opcao == 1:
+        data = input("Digite a data do evento (dd/mm/aaaa): ")
+        for i in range(len(listaDeCompromissos)):
+            if listaDeCompromissos[i].data == data:
+                templateImpressao(listaDeCompromissos[i])
+
+    elif opcao == 2:
+        data = input("Digite a data do evento (dd/mm/aaaa): ")
+        hora = input("Digite a hora do evento (hh:mm): ")
+
+        for i in range(len(listaDeCompromissos)):
+            if listaDeCompromissos[i].data == data and listaDeCompromissos[i].hora == hora:
+                templateImpressao(listaDeCompromissos[i])
     menu()
+        
+
+    # if compromisso:
+    #     templateImpressao(compromisso)
+    # else:
+    #     print("Não foi encontrado nenhum compromisso correspondente!")
+    # menu()
 
 def editarCompromisso():
-    compromisso = filtro()
+    compromisso = filtroPadrao()
     menu()
 
 def excluirCompromisso(vetor):
-    compromisso = filtro()
+    compromisso = filtroPadrao()
     if compromisso:
         vetor.remove(compromisso)
         print("Compromisso removido com sucesso!")
@@ -56,10 +77,10 @@ def excluirCompromisso(vetor):
         print("Nenhum compromisso foi encontrado!")
     menu()
 
-def mostraCompromisso(vetor):
-    if vetor:
-        for i in range(len(vetor)):
-            templateImpressao(vetor[i])
+def mostraCompromisso():
+    if listaDeCompromissos:
+        for i in range(len(listaDeCompromissos)):
+            templateImpressao(listaDeCompromissos[i])
     else:
         print("Não existem compromissos na sua agenda!")
     menu()
@@ -86,7 +107,7 @@ def menu():
     elif opcao == "4":
         excluirCompromisso(listaDeCompromissos)
     elif opcao == "5":
-        mostraCompromisso(listaDeCompromissos)
+        mostraCompromisso()
     elif opcao == "6":
         print("Obrigado por usar a agenda!")
         print("Desenvolvido por Filipe Medeiros de Almeida")
