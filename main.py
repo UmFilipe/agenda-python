@@ -35,7 +35,6 @@ def filtro():
         if listaDeCompromissos[i].data == data and listaDeCompromissos[i].hora == hora:
             return listaDeCompromissos[i]
 
-
 def consultarCompromisso():
     compromisso = filtro()
     if compromisso:
@@ -52,22 +51,20 @@ def excluirCompromisso():
     compromisso = filtro()
     menu()
 
-
 def mostraCompromisso(vetor):
     if vetor:
         for i in range(len(vetor)):
             templateImpressao(vetor[i])
     else:
-        print("Não existem eventos na sua agenda!")
+        print("Não existem compromissos na sua agenda!")
     
     menu()
-    
 
 def menu():
     print("------------------------------------")
     print("Opções da agenda:")
     print("Opção 1: Criar compromisso")
-    print("Opção 2: Consultar compromissos")
+    print("Opção 2: Consultar compromisso")
     print("Opção 3: Alterar compromisso")
     print("Opção 4: Excluir compromisso")
     print("Opção 5: Mostrar todos os seus compromissos")
