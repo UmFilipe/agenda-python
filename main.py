@@ -40,29 +40,32 @@ def criaCompromisso(vetor):
 def consultarCompromisso():
     print("Opção 1: Consulta com data")
     print("Opção 2: Consulta com data e hora")
-    opcao = int(input("Digite a opção de consulta desejada: "))
+    opcao = input("Digite a opção de consulta desejada: ")
 
-    if opcao == 1:
+    resultadosPesquisa = []
+
+    if opcao == "1":
         data = input("Digite a data do evento (dd/mm/aaaa): ")
+
         for i in range(len(listaDeCompromissos)):
             if listaDeCompromissos[i].data == data:
-                templateImpressao(listaDeCompromissos[i])
-
-    elif opcao == 2:
+                resultadosPesquisa.append(listaDeCompromissos[i])
+    elif opcao == "2":
         data = input("Digite a data do evento (dd/mm/aaaa): ")
         hora = input("Digite a hora do evento (hh:mm): ")
 
         for i in range(len(listaDeCompromissos)):
             if listaDeCompromissos[i].data == data and listaDeCompromissos[i].hora == hora:
-                templateImpressao(listaDeCompromissos[i])
-    menu()
-        
+                resultadosPesquisa.append(listaDeCompromissos[i])
+    else:
+        print("Opção inválida!")
 
-    # if compromisso:
-    #     templateImpressao(compromisso)
-    # else:
-    #     print("Não foi encontrado nenhum compromisso correspondente!")
-    # menu()
+    if len(resultadosPesquisa) > 0:
+        templateImpressao(resultadosPesquisa)
+    else:
+        print("Nenhum compromisso correspondente foi encontrado.")
+
+    menu()
 
 def editarCompromisso():
     compromisso = filtroPadrao()
