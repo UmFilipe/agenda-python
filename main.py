@@ -38,10 +38,12 @@ def criarCompromisso(vetor):
     # Verifica se já existe algum compromisso na mesma data e hora
     for i in range(len(vetor)):
         if vetor[i].data == comp.data and vetor[i].hora == comp.hora:
+            print("------------------------------------")
             print("Já existe um compromisso nesta mesma data e hpra")
             menu()
         
     vetor.append(comp)
+    print("------------------------------------")
     print("Compromisso criado com sucesso!")
     menu()
     return vetor 
@@ -68,6 +70,7 @@ def consultarCompromisso():
             if listaDeCompromissos[i].data == data and listaDeCompromissos[i].hora == hora:
                 resultadosPesquisa.append(listaDeCompromissos[i])
     else:
+        print("------------------------------------")
         print("Opção inválida!")
 
     # Verifica se existem itens dentro do vetor de resultados
@@ -75,6 +78,7 @@ def consultarCompromisso():
         for i in range(len(resultadosPesquisa)):
             templateImpressao(resultadosPesquisa[i])
     else:
+        print("------------------------------------")
         print("Nenhum compromisso correspondente foi encontrado.")
 
     menu()
@@ -101,8 +105,10 @@ def editarCompromisso(vetor):
         
         # Inclui o compromisso editado ao vetor
         vetor.append(compromissoEditado)
+        print("------------------------------------")
         print("Compromisso editado com sucesso!")
     else:
+        print("------------------------------------")
         print("Nenhum compromisso correspondente foi encontrado.")
     menu()
 
@@ -112,8 +118,10 @@ def excluirCompromisso(vetor):
     if compromisso:
         # Remove o compromisso selecionado pelo usuário
         vetor.remove(compromisso)
+        print("------------------------------------")
         print("Compromisso removido com sucesso!")
     else:
+        print("------------------------------------")
         print("Nenhum compromisso foi encontrado!")
     menu()
 
@@ -123,6 +131,7 @@ def mostrarCompromissos():
         for i in range(len(listaDeCompromissos)):
             templateImpressao(listaDeCompromissos[i])
     else:
+        print("------------------------------------")
         print("Não existem compromissos na sua agenda!")
     menu()
 
