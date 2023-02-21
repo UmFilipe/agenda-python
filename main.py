@@ -18,8 +18,8 @@ def templateImpressao(compromisso):
 
 # Filtro que será utilizado posteriormente no código
 def filtroPadrao():
-    data = input("Digite a data do evento (dd/mm/aaaa): ")
-    hora = input("Digite a hora do evento (hh:mm): ")
+    data = input("Digite a data do compromisso (dd/mm/aaaa): ")
+    hora = input("Digite a hora do compromisso (hh:mm): ")
 
     for i in range(len(listaDeCompromissos)):
         if listaDeCompromissos[i].data == data and listaDeCompromissos[i].hora == hora:
@@ -57,14 +57,14 @@ def consultarCompromisso():
     resultadosPesquisa = []
 
     if opcao == "1":
-        data = input("Digite a data do evento (dd/mm/aaaa): ")
+        data = input("Digite a data do compromisso (dd/mm/aaaa): ")
 
         for i in range(len(listaDeCompromissos)):
             if listaDeCompromissos[i].data == data:
                 resultadosPesquisa.append(listaDeCompromissos[i])
     elif opcao == "2":
-        data = input("Digite a data do evento (dd/mm/aaaa): ")
-        hora = input("Digite a hora do evento (hh:mm): ")
+        data = input("Digite a data do compromisso (dd/mm/aaaa): ")
+        hora = input("Digite a hora do compromisso (hh:mm): ")
 
         for i in range(len(listaDeCompromissos)):
             if listaDeCompromissos[i].data == data and listaDeCompromissos[i].hora == hora:
