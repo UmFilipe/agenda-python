@@ -1,3 +1,4 @@
+# Classe base para criação de compromissos
 class Compromisso:
     data = None
     hora = None
@@ -24,7 +25,7 @@ def filtroPadrao():
             return listaDeCompromissos[i]
 
 # Funções da agenda        
-def criaCompromisso(vetor):
+def criarCompromisso(vetor):
     comp = Compromisso()
 
     comp.data = input("Digite a data do compromisso (dd/mm/aaaa): ")
@@ -32,6 +33,11 @@ def criaCompromisso(vetor):
     comp.duracao = input("Digite a duração em horas do compromisso: ")
     comp.descricao = input("Digite a descrição para seu compromisso: ")
 
+    for i in range(len(vetor)):
+        if vetor[i].data == comp.data and vetor[i].hora == comp.hora:
+            print("Já existe um compromisso nesta mesma data e hpra")
+            menu()
+        
     vetor.append(comp)
     print("Compromisso criado com sucesso!")
     menu()
@@ -61,7 +67,8 @@ def consultarCompromisso():
         print("Opção inválida!")
 
     if len(resultadosPesquisa) > 0:
-        templateImpressao(resultadosPesquisa)
+        for i in range(len(resultadosPesquisa)):
+            templateImpressao(resultadosPesquisa[i])
     else:
         print("Nenhum compromisso correspondente foi encontrado.")
 
@@ -80,7 +87,7 @@ def excluirCompromisso(vetor):
         print("Nenhum compromisso foi encontrado!")
     menu()
 
-def mostraCompromisso():
+def mostrarCompromissos():
     if listaDeCompromissos:
         for i in range(len(listaDeCompromissos)):
             templateImpressao(listaDeCompromissos[i])
@@ -102,7 +109,7 @@ def menu():
     opcao = input("Digite uma opção: ")
 
     if opcao == "1":
-        criaCompromisso(listaDeCompromissos)
+        criarCompromisso(listaDeCompromissos)
     elif opcao == "2":
         consultarCompromisso()
     elif opcao == "3":
@@ -110,7 +117,7 @@ def menu():
     elif opcao == "4":
         excluirCompromisso(listaDeCompromissos)
     elif opcao == "5":
-        mostraCompromisso()
+        mostrarCompromissos()
     elif opcao == "6":
         print("Obrigado por usar a agenda!")
         print("Desenvolvido por Filipe Medeiros de Almeida")
