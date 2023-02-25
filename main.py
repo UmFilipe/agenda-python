@@ -89,7 +89,7 @@ def editarCompromisso(vetor):
     if compromisso:
         # Insere novos dados para duração e descrição
         compromisso.duracao = input("Digite a nova duração (em horas) para seu compromisso: ")
-        compromisso.descricao = input("Digite a nova desrição para seu compromisso: ")
+        compromisso.descricao = input("Digite a nova descrição para seu compromisso: ")
         print("------------------------------------")
         print("Compromisso editado com sucesso!")
 
