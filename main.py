@@ -87,26 +87,12 @@ def editarCompromisso(vetor):
     compromisso = filtroPadrao()
     
     if compromisso:
-        # Salva a data e hora do compromisso a ser editado
-        data = compromisso.data
-        hora = compromisso.hora
-
-        # Remove compromisso antigo para a adição do editado
-        vetor.remove(compromisso)
-        compromissoEditado = Compromisso()
-
-        # Insere a data e hora salva previamente
-        compromissoEditado.data = data
-        compromissoEditado.hora = hora
-
-        # Insere os novos dados
-        compromissoEditado.duracao = input("Digite a nova duração (em horas) para seu compromisso: ")
-        compromissoEditado.descricao = input("Digite a nova descrição para seu compromisso: ")
-        
-        # Inclui o compromisso editado ao vetor
-        vetor.append(compromissoEditado)
+        # Insere novos dados para duração e descrição
+        compromisso.duracao = input("Digite a nova duração (em horas) para seu compromisso: ")
+        compromisso.descricao = input("Digite a nova desrição para seu compromisso: ")
         print("------------------------------------")
         print("Compromisso editado com sucesso!")
+
     else:
         print("------------------------------------")
         print("Nenhum compromisso correspondente foi encontrado.")
