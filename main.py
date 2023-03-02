@@ -83,7 +83,7 @@ def consultarCompromisso():
 
     menu()
 
-def editarCompromisso(vetor):
+def editarCompromisso():
     compromisso = filtroPadrao()
     
     if compromisso:
@@ -140,7 +140,7 @@ def menu():
     elif opcao == "2":
         consultarCompromisso()
     elif opcao == "3":
-        editarCompromisso(listaDeCompromissos)
+        editarCompromisso()
     elif opcao == "4":
         excluirCompromisso(listaDeCompromissos)
     elif opcao == "5":
